@@ -16,6 +16,7 @@ jobs:
     - stage: test
       script: npm run test
     - stage: build
+      if: branch = master
       script: npm run build
     - stage: "deploy GH-PAGES to production"
           if: branch = master

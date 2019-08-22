@@ -1,5 +1,11 @@
 $body-color: blue;
 
-body {
-  color: $body-color;
+
+:root .milanuncios {
+  --accordion-header-background-color: #e5f2d0;
+  --accordion-header-border-color: #c2dea0;
+  --accordion-header-text-color: #30923e;
+  --accordion-body-background-color: white;
+  --accordion-body-border-color: #c2dea0;
+  --accordion-body-text-color: #30923e;
 }

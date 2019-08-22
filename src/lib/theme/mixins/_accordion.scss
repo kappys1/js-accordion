@@ -1,0 +1,48 @@
+@mixin accordion-variant($background, $border, $background-header) {
+
+
+  .JsAccordion-body {
+    @include color-bg-border(color-yiq($background), $background, $border);
+    @include border-radius($accordion-border-width, 0);
+
+    @if $accordion-rounded {
+      border: $accordion-border-width solid white;
+    }
+  }
+
+  .JsAccordion-header {
+    @include color-bg-border(color-yiq($background-header), $background-header, $border);
+  }
+
+}
+
+@mixin accordion-variant-outline($background, $color, $background-header: darken($background, 7.5%)) {
+
+  // @include color-bg-border($color, $background , $color);
+  border: 0px;
+  background: transparent;
+
+  .panel-header {
+    @include color-bg-border($color, $background-header, $color);
+    border-top: $accordion-border-width solid $color !important;
+    border-bottom: $accordion-border-width solid $color !important;
+  }
+
+}
+
+
+@mixin color-bg-border($c, $bg, $border) {
+  color: $c;
+  background-color: $bg;
+  border-color: $border;
+}
+
+@mixin border-radius($radius: $border-radius, $fallback-border-radius: false) {
+  @if $accordion-rounded {
+    border-radius: $radius;
+  }
+
+  @else if $fallback-border-radius !=false {
+    border-radius: $fallback-border-radius;
+  }
+}

@@ -14,7 +14,7 @@ module.exports = merge(common, {
   bail: true,
   output: {
     path: Path.join(common.output.path, 'lib'),
-    filename: 'js/[name].min.js'
+    filename: 'js/js-accordion.min.js'
   },
   resolve: {
     alias: {
@@ -27,7 +27,7 @@ module.exports = merge(common, {
     }),
     new Webpack.optimize.ModuleConcatenationPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'css/index.css'
+      filename: 'css/js-accordion.css'
     })
   ],
   module: {
