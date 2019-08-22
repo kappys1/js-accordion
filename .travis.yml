@@ -1,5 +1,39 @@
 language: node_js
+cache:
+  directories:
+    - "~/.npm"
+    - node_modules #Cache node_modules for faster builds
+    - build #Cache node_modules for faster builds
+notifications:
+  email: false
 node_js:
-  - "lts/*"
-  - "node"
-script: npm run build
+  - "stable"
+install: true
+jobs:
+  include:
+    - stage: install dependencies
+      script: npm install
+    - stage: test
+      script: npm run test
+    - stage: build
+      script: npm run build
+    - stage: "deploy GH-PAGES to production"
+          if: branch = master
+          script: skip
+          deploy: &pages
+            provider: pages
+            skip_cleanup: true
+            github_token: $GH_TOKEN # Set in the settings page of your repository, as a secure variable
+            keep_history: true
+            local_dir: dist/doc
+            on:
+              branch: master
+              condition: $TRAVIS_BRANCH = master
+    - stage: "semantic release"
+      script:
+        - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run travis-deploy-once "npm run semantic-release"; fi
+
+branches:
+  only:
+    - master
+    - development
