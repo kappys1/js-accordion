@@ -1,0 +1,31 @@
+ @import './default.scss';
+
+ @mixin accordion-theme($c-header-text, $c-header-background, $c-border, $c-body-text:$c-header-text, $c-body-background: white) {
+   --accordion-header-background-color: #{$c-header-background};
+   --accordion-header-border-color: #{$c-border};
+   --accordion-header-text-color: #{$c-header-text};
+   --accordion-body-background-color: #{$c-body-background};
+   --accordion-body-border-color: #{$c-border};
+   --accordion-body-text-color: #{$c-body-text};
+ }
+
+ :root {
+   $primary: map-get($theme-colors, c-corporate);
+   @include accordion-theme($primary, lighten($primary, 40%), lighten($primary, 30%));
+ }
+
+ :root .fotocasa-theme {
+   @import './themes/fotocasa.scss';
+   $primary: map-get($theme-colors, c-corporate);
+   $c-dark: map-get($theme-colors, c-dark);
+   $c-default: map-get($theme-colors, c-default);
+   @include accordion-theme(darken($primary, 10%), lighten($primary, 50%), lighten($primary, 30%), $c-dark, lighten($c-default, 5%));
+ }
+
+ :root .milanuncios-theme {
+   @import './themes/milanuncios.scss';
+   $primary: map-get($theme-colors, c-corporate);
+   $c-dark: map-get($theme-colors, c-dark);
+   $c-default: map-get($theme-colors, c-default);
+   @include accordion-theme(darken($primary, 10%), lighten($primary, 40%), lighten($primary, 30%), $c-dark, lighten($c-default, 5%));
+ }

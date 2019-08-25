@@ -20,40 +20,55 @@
     border-radius: var(--accordion-border-radius-width) var(--accordion-border-radius-width) 0 0;
   }
 
-  &:last-child {
-    border-radius: 0 0 var(--accordion-border-radius-width) var(--accordion-border-radius-width);
-  }
-
-  &--opened {
-    +.JsAccordion-body {
-      border-top: solid var(--accordion-border-width) var(--accordion-header-border-color);
-    }
-  }
-
-
-}
-
-.JsAccordion-body {
-  overflow: hidden;
-  margin: 0;
-  padding: 1rem;
-  transition: all var(--accordion-time-transition) var(--accordion-function-transition);
-  border: solid var(--accordion-border-width) var(--accordion-header-border-color);
-  border-top: 0;
-  border-bottom: 0;
-  @include flex-content(row, flex-start, flex-start);
-  @include color-bg-border(var(--accordion-body-text-color), var(--accordion-body-background-color), var(--accordion-body-border-color));
-
-  &:last-child {
+  &:last-of-type {
     border-bottom: solid var(--accordion-border-width) var(--accordion-header-border-color);
     border-radius: 0 0 var(--accordion-border-radius-width) var(--accordion-border-radius-width);
   }
 
+  &--opened {
+    &:last-of-type {
+      border-bottom: 0;
+      border-radius: 0;
+    }
+
+    +.JsAccordion-body {
+      border-top: solid var(--accordion-border-width) var(--accordion-header-border-color);
+    }
+  }
+}
+
+.JsAccordion-body {
+  margin: 0;
+  padding: 1rem;
+  border: solid var(--accordion-border-width) var(--accordion-header-border-color);
+  border-top: 0;
+  border-bottom: 0;
+  overflow: hidden;
+  @include flex-content(row, flex-start, flex-start);
+  @include color-bg-border(var(--accordion-body-text-color), var(--accordion-body-background-color), var(--accordion-body-border-color));
+
+  // &:last-child {
+  //   border-bottom: solid var(--accordion-border-width) var(--accordion-header-border-color);
+  //   border-radius: 0 0 var(--accordion-border-radius-width) var(--accordion-border-radius-width);
+  // }
+
+  &--withTransition {
+    transition: all var(--accordion-time-transition) var(--accordion-function-transition);
+  }
+
+  &--opened {
+    overflow: auto;
+
+    &:last-child {
+      border-bottom: solid var(--accordion-border-width) var(--accordion-header-border-color);
+      border-radius: 0 0 var(--accordion-border-radius-width) var(--accordion-border-radius-width);
+    }
+  }
 
 }
 
 .JsAccordion-body:not(.JsAccordion-body--opened) {
-  height: 0;
+  // height: 0;
   padding-top: 0;
   padding-bottom: 0;
 }

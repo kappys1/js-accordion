@@ -5,7 +5,7 @@
     "prettier/standard",
   ],
   "plugins": [
-    "prettier"
+    "prettier",
   ],
   "env": {
     "browser": true,
@@ -18,7 +18,9 @@
   },
   "rules": {
     "prettier/prettier": ["error"],
-    "allowTernary": true
-
+    "no-console": 1,
+    "no-unused-expressions": 0,
+    "allowShortCircuit": 0,
+    "allowTernary": 0
   }
 }

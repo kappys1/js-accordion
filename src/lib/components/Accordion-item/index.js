@@ -1,9 +1,10 @@
 import './index.scss'
 
 export class AccordionItem {
-  constructor(header, content) {
+  constructor(header, content, config = {}) {
     this.opened = false
     this.header = header
+    this.config = config
     this.header.classList.add('JsAccordion-header')
     if (content.nodeName.toLowerCase() === 'dd') {
       this.content = content
@@ -25,7 +26,7 @@ export class AccordionItem {
     this.header.classList.remove('JsAccordion-header--opened')
     this.content.classList.remove('JsAccordion-body--opened')
     if (this.content) {
-      this.content.style.height = '0px'
+      this.content.style.maxHeight = '0px'
     }
   }
 
@@ -34,7 +35,11 @@ export class AccordionItem {
     this.header.classList.add('JsAccordion-header--opened')
     this.content.classList.add('JsAccordion-body--opened')
     if (this.content) {
-      this.content.style.height = `${this.content.scrollHeight}px`
+      this.content.style.maxHeight =
+        this.config.maxHeight !== '9e99px'
+          ? this.config.maxHeight
+          : `${this.content.scrollHeight}px`
+      // this.content.style.height = `${this.content.scrollHeight}px`
     }
   }
 }
