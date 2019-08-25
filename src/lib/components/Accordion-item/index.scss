@@ -36,7 +36,8 @@
 .JsAccordion-body {
   overflow: hidden;
   margin: 0;
-  transition: height var(--accordion-time-transition) var(--accordion-function-transition);
+  padding: 1rem;
+  transition: all var(--accordion-time-transition) var(--accordion-function-transition);
   border: solid var(--accordion-border-width) var(--accordion-header-border-color);
   border-top: 0;
   border-bottom: 0;
@@ -51,9 +52,10 @@
 
 }
 
-.JsAccordion-body:not(.show) {
+.JsAccordion-body:not(.JsAccordion-body--opened) {
   height: 0;
-  padding: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 dd:not(.JsAccordion-body) {

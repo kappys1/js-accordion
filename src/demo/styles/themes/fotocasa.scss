@@ -1,0 +1,10 @@
+//THEME
+$theme-colors: ();
+$theme-colors: map-merge(("c-accent" : #e3165b,
+    "c-base": #dddddd,
+    "c-dark": #5f5f5f,
+    "c-contrast": #000,
+    "c-corporate": #303ab2,
+    "c-default": #f1f1f1,
+    "c-highlight": #fce8ef,
+  ), $theme-colors);
