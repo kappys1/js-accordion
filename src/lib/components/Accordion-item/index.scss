@@ -26,14 +26,12 @@
   }
 
   &--opened {
+    border-bottom: solid var(--accordion-border-width) var(--accordion-header-border-color);
+
     &:last-of-type {
-      border-bottom: 0;
       border-radius: 0;
     }
 
-    +.JsAccordion-body {
-      border-top: solid var(--accordion-border-width) var(--accordion-header-border-color);
-    }
   }
 }
 
@@ -46,11 +44,6 @@
   overflow: hidden;
   @include flex-content(row, flex-start, flex-start);
   @include color-bg-border(var(--accordion-body-text-color), var(--accordion-body-background-color), var(--accordion-body-border-color));
-
-  // &:last-child {
-  //   border-bottom: solid var(--accordion-border-width) var(--accordion-header-border-color);
-  //   border-radius: 0 0 var(--accordion-border-radius-width) var(--accordion-border-radius-width);
-  // }
 
   &--withTransition {
     transition: all var(--accordion-time-transition) var(--accordion-function-transition);
@@ -68,7 +61,6 @@
 }
 
 .JsAccordion-body:not(.JsAccordion-body--opened) {
-  // height: 0;
   padding-top: 0;
   padding-bottom: 0;
 }

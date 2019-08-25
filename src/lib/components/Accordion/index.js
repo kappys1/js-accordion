@@ -2,14 +2,14 @@ import './index.scss'
 import AccordionItem from '../Accordion-item'
 const DEFAULT_CONFIG = {
   maxHeight: '9e99px',
-  transition: true,
-  autoClose: true,
+  withTransition: true,
+  withAutoClose: true,
   onToggle: () => {}
 }
 export class Accordion {
   constructor(element, config = DEFAULT_CONFIG) {
     this.element = document.getElementById(element)
-    this.config = Object.assign(DEFAULT_CONFIG, config)
+    this.config = Object.assign({...DEFAULT_CONFIG}, config)
     if (this.element.tagName.toLowerCase() === 'dl') {
       this.init()
     } else {
@@ -27,7 +27,7 @@ export class Accordion {
     this.accordionItems.map(item => {
       item.header.addEventListener('click', () => this.toggleAccordion(item))
     })
-    if (this.config.transition) {
+    if (this.config.withTransition) {
       this.element.classList.add('JsAccordion--withTransition')
     }
   }
@@ -36,7 +36,7 @@ export class Accordion {
     if (accordion.opened) {
       accordion.close()
     } else {
-      if (this.config.autoClose) {
+      if (this.config.withAutoClose) {
         this.accordionItems.map(item => item.close())
       }
       accordion.open()

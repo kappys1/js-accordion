@@ -7,7 +7,7 @@
 ## Install
 
 ```shell
-$ npm i js-accordion --save
+npm i js-accordion --save
 ```
 
 In a browser:
