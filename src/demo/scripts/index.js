@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable func-names */
 import {Accordion} from '../../lib/index'
-import {loadExample, loadThemes} from './utils'
+import {loadExample, loadThemes, getRequest} from './utils'
 import '../styles/index.scss'
 
 const examples = [
@@ -73,7 +73,11 @@ const themes = [
       'https://static.adevinta.com/wp-content/uploads/2018/07/23132101/Screen-Shot-2018-07-23-at-15.19.56-300x94.png'
   }
 ]
-
+const dynamicRequests = [
+  'http://www.mocky.io/v2/5d63ba863200006600ba1d05',
+  'http://www.mocky.io/v2/5d63baa83200007500ba1d07',
+  'http://www.mocky.io/v2/5d63bac53200007300ba1d09'
+]
 window.changeTheme = function(theme, logo) {
   const active = document.querySelector('.Tabs .active')
   if (active !== null) {
@@ -87,6 +91,22 @@ window.changeTheme = function(theme, logo) {
   body.classList.add(theme)
 }
 
+window.loadAjaxAccordion = function() {
+  const url =
+    dynamicRequests[Math.floor(Math.random() * dynamicRequests.length)]
+  document.getElementById('examplesDynamic').innerHTML = '<div>Loading...</div>'
+  getRequest(url)
+    .then(res => {
+      const id = 'dynamicAccordion'
+      const config = {...res, id: 'dynamicAccordion'}
+      const html = loadExample(config)
+      document.getElementById('examplesDynamic').innerHTML = html
+      setTimeout(() => {
+        new Accordion(id, config)
+      })
+    })
+    .catch(err => console.log(err))
+}
 document.addEventListener('DOMContentLoaded', function() {
   const html = examples.map(ex => loadExample(ex)).join('')
   const htmlThemes = loadThemes(themes)

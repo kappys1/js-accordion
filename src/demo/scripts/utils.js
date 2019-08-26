@@ -63,3 +63,18 @@ export function loadThemes(themes) {
       .join(' ')}
   `
 }
+
+export function getRequest(url) {
+  return new Promise((resolve, reject) => {
+    const xmlHttp = new XMLHttpRequest()
+    xmlHttp.onreadystatechange = function() {
+      if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+        resolve(JSON.parse(xmlHttp.responseText))
+      } else if (xmlHttp.readyState === 4 && xmlHttp.status !== 200) {
+        reject(xmlHttp.responseText)
+      }
+    }
+    xmlHttp.open('GET', url, true) // true for asynchronous
+    xmlHttp.send(null)
+  })
+}
