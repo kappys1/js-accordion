@@ -3,7 +3,7 @@ cache:
   directories:
     - "~/.npm"
     - node_modules #Cache node_modules for faster builds
-    - build #Cache node_modules for faster builds
+    - dist #Cache node_modules for faster builds
 notifications:
   email: false
 node_js:
@@ -16,8 +16,8 @@ jobs:
     - stage: test
       script: npm run test
     - stage: build
-      if: branch
       script: npm run build
+      skip_cleanup: true
     - stage: deploy to heroku staging
       if: branch = staging
       script: skip
@@ -43,9 +43,21 @@ jobs:
         on:
           branch: master
           condition: $TRAVIS_BRANCH = master
-    - stage: semantic release
-      script:
-        - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run travis-deploy-once "npm run semantic-release"; fi
+    - stage: npm release
+      if: branch = master
+      node_js: "stable"
+      script: skip
+      before_deploy:
+        - npm run semantic-release
+        - cp package.json dist/lib/package.json
+        - cd dist/lib
+      deploy:
+        provider: npm
+        email: "$NPM_EMAIL"
+        api_key: "$NPM_TOKEN"
+        skip_cleanup: true
+        on:
+          tags: true
 branches:
   only:
     - master
