@@ -3,7 +3,7 @@ cache:
   directories:
     - "~/.npm"
     - node_modules #Cache node_modules for faster builds
-    - dist #Cache node_modules for faster builds
+    - dist
 notifications:
   email: false
 node_js:
@@ -31,12 +31,13 @@ jobs:
           repo: kappys1/js-accordion
           branch: staging
           condition: $TRAVIS_BRANCH = staging
-    - stage: deploy GH-PAGES to production
+    - stage: "deploy GH-PAGES to production"
       if: branch = master
       script: skip
       deploy: &pages
         provider: pages
         skip_cleanup: true
+        verbose: true
         github_token: $GH_TOKEN # Set in the settings page of your repository, as a secure variable
         keep_history: true
         local_dir: dist/doc
