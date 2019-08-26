@@ -16,7 +16,7 @@ jobs:
     - stage: test
       script: npm run test
     - stage: build
-      if: branch = master
+      if: branch
       script: npm run build
     - stage: deploy to heroku staging
       if: branch = staging
@@ -46,8 +46,7 @@ jobs:
     - stage: semantic release
       script:
         - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run travis-deploy-once "npm run semantic-release"; fi
-
 branches:
   only:
     - master
-    - development
+    - staging
