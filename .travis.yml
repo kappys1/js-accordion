@@ -18,19 +18,32 @@ jobs:
     - stage: build
       if: branch = master
       script: npm run build
-    - stage: "deploy GH-PAGES to production"
-          if: branch = master
-          script: skip
-          deploy: &pages
-            provider: pages
-            skip_cleanup: true
-            github_token: $GH_TOKEN # Set in the settings page of your repository, as a secure variable
-            keep_history: true
-            local_dir: dist/doc
-            on:
-              branch: master
-              condition: $TRAVIS_BRANCH = master
-    - stage: "semantic release"
+    - stage: deploy to heroku staging
+      if: branch = staging
+      script: skip
+      deploy: &heroku
+        provider: heroku
+        skip_cleanup: true # Don't re-run the tests
+        api_key:
+          secure: Yd1qpjFJ/mXDaqUIQLDkt40+S2YKuitiQJzdECjFT6QMFPEUw29Zf/49yasjkPRIqKM1jCmGDkSQ4v8KfmHZFmB+vQg6AZZIHClcGfTNxrWH9F7nJpihc0VB0pxiFRAXzEELRKjfB1/eFAhVdwmMAx0AZmkoKmM+3BX4TIvHReEGGkEyQR0QfyRI7Skcs7bAPuwLX4aEAwKejDl3Puhrlu8krlNRgNxf04OUwvQ34S20OZeV1KmmqhNn3VXrQwrUgplNJ/uk1zmG0K/sDBz5Q6fT42pHhZ8j2zWjBoTOzU6NphTqZaMOO9LYNfpqRvyNyPpcsnpg9rpgJbMrgyf9PpHKew89Md2SCgkWdyHwXaWqjExkP6UxImszV6ndewILnSoCTDj/ZJUHHuLLw9kvR8cekHwi8xR2zFLLrD/RydzIgB95mtboxcKnBzNWAaKq8Qr0YvvlIvhU2Ef/rsDShXd6zTRZE+vCHK384/nO+GfDbVaRCjKDfRRe+mim25wAPFpSdm9uvZhLOJf3gpUhVvOEi3I1F44H/+wT3luXyR3RWPGG+faGLFBLq1AlFjqruckVut8tmGS0u4BNZ1fq4ecobwjttwPmNF3VFlzHfRWaOPBRaGe6MV+EsBVY9hmjmw8lZJgdGfRz0x3Vrv/Sn/dxrvS9hrE0UFiWnUjAAT0=
+        app: js-accordion-staging
+        on:
+          repo: kappys1/js-accordion
+          branch: staging
+          condition: $TRAVIS_BRANCH = staging
+    - stage: deploy GH-PAGES to production
+      if: branch = master
+      script: skip
+      deploy: &pages
+        provider: pages
+        skip_cleanup: true
+        github_token: $GH_TOKEN # Set in the settings page of your repository, as a secure variable
+        keep_history: true
+        local_dir: dist/doc
+        on:
+          branch: master
+          condition: $TRAVIS_BRANCH = master
+    - stage: semantic release
       script:
         - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then npm run travis-deploy-once "npm run semantic-release"; fi
 
