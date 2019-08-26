@@ -10,6 +10,7 @@ export class Accordion {
   constructor(element, config = DEFAULT_CONFIG) {
     this.element = document.getElementById(element)
     this.config = Object.assign({...DEFAULT_CONFIG}, config)
+    this.accordionItems = []
     if (this.element.tagName.toLowerCase() === 'dl') {
       this.init()
     } else {
@@ -19,17 +20,28 @@ export class Accordion {
 
   init() {
     this.element.classList.add('JsAccordion')
-    const headers = this.element.querySelectorAll('dt')
-    this.accordionItems = [...headers].map(
-      header =>
-        new AccordionItem(header, header.nextElementSibling, this.config)
-    )
-    this.accordionItems.map(item => {
-      item.header.addEventListener('click', () => this.toggleAccordion(item))
-    })
+    this.update()
     if (this.config.withTransition) {
       this.element.classList.add('JsAccordion--withTransition')
     }
+  }
+
+  update() {
+    const headers = this.element.querySelectorAll('dt')
+    this.accordionItems = [...headers].map((header, i) => {
+      const accordion = new AccordionItem(
+        header,
+        header.nextElementSibling,
+        this.config
+      )
+
+      accordion.header.addEventListener(
+        'click',
+        () => this.toggleAccordion(accordion),
+        false
+      )
+      return accordion
+    })
   }
 
   toggleAccordion(accordion) {
