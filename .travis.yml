@@ -47,9 +47,8 @@ jobs:
     - stage: npm release
       if: branch = master
       node_js: "stable"
-      script: skip
+      script: npm run semantic-release
       before_deploy:
-        - npm run semantic-release
         - cp package.json dist/lib/package.json
         - cd dist/lib
       deploy:
