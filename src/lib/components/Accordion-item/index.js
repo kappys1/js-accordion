@@ -8,8 +8,10 @@ export class AccordionItem {
     this.header.classList.add('JsAccordion-header')
     if (content.nodeName.toLowerCase() === 'dd') {
       this.content = content
-      this.content.classList.add('JsAccordion-body')
-      this.close()
+      if (!this.content.classList.contains('JsAccordion-body')) {
+        this.content.classList.add('JsAccordion-body')
+        this.close()
+      }
     }
   }
 
