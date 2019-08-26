@@ -25,7 +25,8 @@ jobs:
         provider: heroku
         skip_cleanup: true # Don't re-run the tests
         api_key:
-          secure: "ijS/pjfcl3dLIkKQo/WRAxV7J4gnY74QZZ7DF270F2xGzdIob9AhaGdBrD8YXrKHqAtytBgWEtTL6C8XbIOg+12D9KY4jjD07Nhu6pNHW/d9KFaKnNA45UD5GTlpLsOKfquE95zmPGQq3+vI1ZDMMWf3mdGvJUO0INxW7ILjQsyzdyrSl4O0DUO+CCL1QghbkmIPklvvlymGzuotTwmPxvitEMji/Yqzus+LdyQjQmmtfvR4rLB5bvgIn/1hZPbbuLI7g532WsTEBS5O9OzubNn20pDmPhg8G69UBpBVVXPxUrrm2BN1BUGUy4ciXdXEEFdG5mkgMJiO8YvbGJkTdqSF82Ibp+NCCitBxN2er5Cy9Iq4hghjOdO4vzgfBAQrfo/5ZD8ah2DjE05uczQoVPrHu8ZyRV+UGmeOc4fI9J2hSZv7yqOe3OXEwvYG3wKSIbhjRH+pe7stbOlaSNgrp599Pf5dT2Lau3vbO/VsUYQ4OtH5PWG03Inhd2IUGShEmTRVsOYdVqg4a9/3FuVPaCfZJorUeELNYuugVuwjNaSJFAvvMqrYZxLarmResMINpknocH2mTQ8A/zBsQyGwpnf1E+26g6/RMh6Dmf7iieQv9wXuzz81w3ia+ZVp11UY+3R/IfVKolub2fP5B0EkKSJZiauraG29Vnzyh7BoJJI="        app: js-accordion-staging
+          secure: ijS/pjfcl3dLIkKQo/WRAxV7J4gnY74QZZ7DF270F2xGzdIob9AhaGdBrD8YXrKHqAtytBgWEtTL6C8XbIOg+12D9KY4jjD07Nhu6pNHW/d9KFaKnNA45UD5GTlpLsOKfquE95zmPGQq3+vI1ZDMMWf3mdGvJUO0INxW7ILjQsyzdyrSl4O0DUO+CCL1QghbkmIPklvvlymGzuotTwmPxvitEMji/Yqzus+LdyQjQmmtfvR4rLB5bvgIn/1hZPbbuLI7g532WsTEBS5O9OzubNn20pDmPhg8G69UBpBVVXPxUrrm2BN1BUGUy4ciXdXEEFdG5mkgMJiO8YvbGJkTdqSF82Ibp+NCCitBxN2er5Cy9Iq4hghjOdO4vzgfBAQrfo/5ZD8ah2DjE05uczQoVPrHu8ZyRV+UGmeOc4fI9J2hSZv7yqOe3OXEwvYG3wKSIbhjRH+pe7stbOlaSNgrp599Pf5dT2Lau3vbO/VsUYQ4OtH5PWG03Inhd2IUGShEmTRVsOYdVqg4a9/3FuVPaCfZJorUeELNYuugVuwjNaSJFAvvMqrYZxLarmResMINpknocH2mTQ8A/zBsQyGwpnf1E+26g6/RMh6Dmf7iieQv9wXuzz81w3ia+ZVp11UY+3R/IfVKolub2fP5B0EkKSJZiauraG29Vnzyh7BoJJI=
+        app: js-accordion-staging
         on:
           repo: kappys1/js-accordion
           branch: staging
