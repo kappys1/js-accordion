@@ -17,7 +17,7 @@
     "test": "jest",
     "semantic-release": "semantic-release",
     "travis-deploy-once": "travis-deploy-once",
-    "commit": "git-cz"
+    "commit": "npx git-cz"
   },
   "repository": {
     "type": "git",
@@ -47,6 +47,11 @@
       "git add"
     ]
   },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+    }
+  },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-conventional-changelog"
@@ -66,36 +71,48 @@
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.2",
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^2.0.2",
     "copy-webpack-plugin": "^5.0.3",
     "css-loader": "^3.0.0",
+    "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.1.0",
+    "eslint-config-standard": "^14.0.1",
     "eslint-loader": "^2.2.1",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
+    "eslint-plugin-standard": "^4.0.1",
     "file-loader": "^4.0.0",
     "html-webpack-plugin": "^4.0.0-beta.5",
+    "husky": "^3.0.4",
     "jest": "^24.9.0",
+    "jest-css-modules": "^2.1.0",
+    "lint-staged": "^9.2.3",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "prettier": "^1.18.2",
     "sass-loader": "^7.1.0",
+    "semantic-release": "^15.13.21",
     "style-loader": "^0.23.1",
     "stylelint": "^10.1.0",
     "stylelint-prettier": "^1.1.1",
     "stylelint-scss": "^3.9.4",
     "stylelint-selector-bem-pattern": "^2.1.0",
+    "travis-deploy-once": "^5.0.11",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1",
-    "webpack-merge": "^4.2.1",
-    "semantic-release": "^15.13.21"
+    "webpack-merge": "^4.2.1"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.0",

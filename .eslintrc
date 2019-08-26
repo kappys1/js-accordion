@@ -1,11 +1,12 @@
 {
   "extends": [
+    "standard",
     "airbnb",
     "prettier",
     "prettier/standard",
   ],
   "plugins": [
-    "prettier"
+    "prettier",
   ],
   "env": {
     "browser": true,
@@ -17,6 +18,11 @@
     "sourceType": "module"
   },
   "rules": {
-    "prettier/prettier": ["error"]
+    "prettier/prettier": ["error"],
+    "import/named": 0,
+    "no-console": 1,
+    "no-unused-expressions": 0,
+    "allowShortCircuit": 0,
+    "allowTernary": 0
   }
 }

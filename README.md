@@ -1,31 +1,21 @@
-# Webpack Frontend Starterkit
+# js-accordion
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/wbkd/js-accordion.svg)](https://greenkeeper.io/)
+[![npm version](https://badge.fury.io/js/js-accordion.svg)](https://badge.fury.io/js/js-accordion)
+![licence](https://img.shields.io/badge/licence-MIT-blue.svg?style=flat) 
+[![Build Status](https://travis-ci.org/kappys1/js-accordion.svg?branch=master)](https://travis-ci.org/kappys1/js-accordion)
 
-A lightweight foundation for your next webpack based frontend project.
+## Install
 
-### Installation
-
-```
-npm install
-```
-
-### Start Dev Server
-
-```
-npm start
+```shell
+npm i js-accordion --save
 ```
 
-### Build Prod Version
-
+In a browser:
+```html
+<script src="js-accordion.min.js"></script>
 ```
-npm run build
+
+Load ES module:
+```js
+import {Accordion} from 'js-accordion';
 ```
-
-### Features:
-
-- ES6 Support via [babel](https://babeljs.io/) (v7)
-- SASS Support via [sass-loader](https://github.com/jtangelder/sass-loader)
-- Linting via [eslint-loader](https://github.com/MoOx/eslint-loader)
-
-When you run `npm run build` we use the [mini-css-extract-plugin](https://github.com/webpack-contrib/mini-css-extract-plugin) to move the css to a separate file. The css file gets included in the head of the `index.html`.

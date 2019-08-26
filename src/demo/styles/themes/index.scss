@@ -1,0 +1,79 @@
+ @import './default.scss';
+
+ @mixin accordion-theme($c-header-text, $c-header-background, $c-border, $c-body-text:$c-header-text, $c-body-background: white) {
+   --accordion-header-background-color: #{$c-header-background};
+   --accordion-header-border-color: #{$c-border};
+   --accordion-header-text-color: #{$c-header-text};
+   --accordion-body-background-color: #{$c-body-background};
+   --accordion-body-border-color: #{$c-border};
+   --accordion-body-text-color: #{$c-body-text};
+ }
+
+ :root {
+   $c-primary: map-get($theme-colors, c-corporate);
+   $dark: map-get($theme-colors, c-dark);
+   @include accordion-theme($dark, lighten($c-primary, 60%), lighten($c-primary, 30%), $dark);
+ }
+
+ :root .fotocasa-theme {
+   @import './themes/fotocasa.scss';
+   $c-primary: map-get($theme-colors, c-corporate);
+   $c-dark: map-get($theme-colors, c-dark);
+   $c-default: map-get($theme-colors, c-default);
+   $c-highlight: map-get($theme-colors, c-highlight);
+   $c-accent: map-get($theme-colors, c-accent);
+   @include accordion-theme(darken($c-primary, 10%), lighten($c-primary, 53%), lighten($c-primary, 30%), $c-dark, lighten($c-default, 5%));
+
+   .JsAccordion-header:hover {
+     background-color: lighten($c-highlight, 35%)
+   }
+
+   .JsAccordion-header--opened {
+     color: $c-accent;
+   }
+ }
+
+ :root .milanuncios-theme {
+   @import './themes/milanuncios.scss';
+   $c-primary: map-get($theme-colors, c-corporate);
+   $c-dark: map-get($theme-colors, c-dark);
+   $c-default: map-get($theme-colors, c-default);
+   @include accordion-theme(darken($c-primary, 10%), lighten($c-primary, 40%), lighten($c-primary, 30%), $c-dark, lighten($c-default, 5%));
+
+   .JsAccordion-header:hover {
+     background-color: lighten($c-primary, 35%)
+   }
+ }
+
+ :root .infojobs-theme {
+   @import './themes/infojobs.scss';
+   $c-primary: map-get($theme-colors, c-corporate);
+   $c-dark: map-get($theme-colors, c-dark);
+   $c-default: map-get($theme-colors, c-default);
+   @include accordion-theme(white, $c-primary, darken($c-primary, 5%), $c-dark, lighten($c-default, 5%));
+ }
+
+ :root .motos-theme {
+   @import './themes/motos.scss';
+   $c-primary: map-get($theme-colors, c-corporate);
+   $c-dark: map-get($theme-colors, c-dark);
+   $c-contrast: map-get($theme-colors, c-contrast);
+   @include accordion-theme(white, $c-contrast, white, $c-dark, white);
+
+   .JsAccordion-header--opened {
+     color: $c-primary;
+   }
+ }
+
+ :root .vibbo-theme {
+   @import './themes/vibbo.scss';
+   $c-c-primary: map-get($theme-colors, c-corporate);
+   $c-dark: map-get($theme-colors, c-dark);
+   $c-default: map-get($theme-colors, c-default);
+   $c-highlight: map-get($theme-colors, c-highlight);
+   @include accordion-theme($c-c-primary, white, $c-default, $c-dark, white);
+
+   .JsAccordion-header:hover {
+     background-color: $c-highlight
+   }
+ }
