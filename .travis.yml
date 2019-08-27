@@ -50,6 +50,7 @@ jobs:
         provider: script
         skip_cleanup: true
         script:
+          - cd dist/lib
           - npx semantic-release
 branches:
   only:

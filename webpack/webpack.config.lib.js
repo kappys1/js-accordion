@@ -2,7 +2,6 @@ const Path = require('path')
 const Webpack = require('webpack')
 const merge = require('webpack-merge')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const common = require('./webpack.common.js')
 
 module.exports = merge(common, {
@@ -29,15 +28,7 @@ module.exports = merge(common, {
     new Webpack.optimize.ModuleConcatenationPlugin(),
     new MiniCssExtractPlugin({
       filename: 'css/js-accordion.css'
-    }),
-    new CopyWebpackPlugin([
-      {from: Path.resolve(__dirname, '../README.md'), to: 'README.md'},
-      {from: Path.resolve(__dirname, '../LICENSE'), to: 'LICENSE'},
-      {
-        from: Path.resolve(__dirname, '../CONTRIBUTING.md'),
-        to: 'CONTRIBUTING.md'
-      }
-    ])
+    })
   ],
   module: {
     rules: [
