@@ -45,6 +45,7 @@ jobs:
           condition: $TRAVIS_BRANCH = master
     - stage: npm release
       if: branch = master
+      script: skip
       deploy:
         provider: script
         skip_cleanup: true
