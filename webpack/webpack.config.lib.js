@@ -3,8 +3,10 @@ const Webpack = require('webpack')
 const merge = require('webpack-merge')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyPkgJsonPlugin = require('copy-pkg-json-webpack-plugin')
 const common = require('./webpack.common.js')
 
+const fileName = 'js/js-accordion.min.js'
 module.exports = merge(common, {
   entry: {
     index: Path.resolve(__dirname, '../src/lib/index.js')
@@ -14,7 +16,7 @@ module.exports = merge(common, {
   stats: 'errors-only',
   output: {
     path: Path.join(common.output.path, 'lib'),
-    filename: 'js/js-accordion.min.js',
+    filename: fileName,
     library: 'jsAccordion',
     libraryTarget: 'umd',
     umdNamedDefine: true
@@ -33,14 +35,24 @@ module.exports = merge(common, {
       filename: 'css/js-accordion.css'
     }),
     new CopyWebpackPlugin([
-      {from: Path.resolve(__dirname, '../package.json'), to: 'package.json'},
       {from: Path.resolve(__dirname, '../README.md'), to: 'README.md'},
       {from: Path.resolve(__dirname, '../LICENSE'), to: 'LICENSE.md'},
       {
         from: Path.resolve(__dirname, '../CONTRIBUTING.md'),
         to: 'CONTRIBUTING.md'
       }
-    ])
+    ]),
+    new CopyPkgJsonPlugin({
+      remove: [
+        'devDependencies',
+        'config',
+        'commitlint',
+        'jest',
+        'husky',
+        'lint-staged'
+      ],
+      replace: {main: fileName}
+    })
   ],
   module: {
     rules: [

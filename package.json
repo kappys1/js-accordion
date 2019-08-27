@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "description": "A light foundation for your next frontend project based on webpack.",
   "homepage": ".",
-  "main": "js/js-accordion.min.js",
+  "main": "dist/lib/js/js-accordion.min.js",
   "files": [
     "js",
     "css",
@@ -16,9 +16,9 @@
     "build:lib": "NODE_ENV=production webpack --config webpack/webpack.config.lib.js  --colors",
     "build:doc": "NODE_ENV=production webpack --config webpack/webpack.config.prod.js  --colors",
     "start": "webpack-dev-server --open --config webpack/webpack.config.dev.js",
-    "test": "jest",
+    "test": "jest --coverage",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls --verbose ",
     "semantic-release": "semantic-release",
-    "travis-deploy-once": "travis-deploy-once",
     "commit": "npx git-cz"
   },
   "repository": {
@@ -30,8 +30,10 @@
     "accordion-js",
     "frontend",
     "es6",
+    "vanilla",
     "javascript",
-    "webdev"
+    "js",
+    "webpack"
   ],
   "author": "Alex Marcos Gutierrez",
   "license": "MIT",
@@ -52,6 +54,14 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 95,
+        "lines": 95,
+        "statements": 95
+      }
     }
   },
   "config": {
@@ -81,7 +91,9 @@
     "babel-loader": "^8.0.5",
     "babel-plugin-add-module-exports": "^1.0.2",
     "clean-webpack-plugin": "^2.0.2",
+    "copy-pkg-json-webpack-plugin": "0.0.38",
     "copy-webpack-plugin": "^5.0.4",
+    "coveralls": "^3.0.6",
     "css-loader": "^3.0.0",
     "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.1.0",
@@ -119,8 +131,5 @@
     "webpack-dev-server": "^3.2.1",
     "webpack-merge": "^4.2.1"
   },
-  "dependencies": {
-    "@babel/polyfill": "^7.4.0",
-    "core-js": "^3.0.1"
-  }
+  "dependencies": {}
 }

@@ -3,7 +3,8 @@ cache:
   directories:
     - "~/.npm"
     - "node_modules" #Cache node_modules for faster builds
-    - dist #Cache node_modules for faster builds
+    - dist
+    - coverage
 notifications:
   email: false
 node_js:
@@ -17,6 +18,9 @@ jobs:
       script: npm run test
     - stage: build
       script: npm run build
+    - stage: coveralls
+      if: branch = master
+      script: npm run report-coverage
     - stage: deploy to heroku staging
       if: branch = staging
       script: skip
