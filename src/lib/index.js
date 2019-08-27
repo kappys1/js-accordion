@@ -1,1 +1,3 @@
-export * from './components/Accordion'
+import Accordion from './components/Accordion'
+
+export default Accordion

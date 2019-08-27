@@ -22,10 +22,13 @@ In a browser:
 
 Load ES module:
 ```js
-import {Accordion} from 'js-accordion';
+import "js-accordion/css/js-accordion.css"; //if is necesary.
+import Accordion from 'js-accordion';
 ```
 
 ## Usage
+
+**you must import the style in html or script.**
 
 ### html
 
@@ -51,8 +54,10 @@ import {Accordion} from 'js-accordion';
 ### Script
 
 ```js
-import {Accordion} from 'path/js/js-accordion.min.js'
+import "js-accordion/css/js-accordion.css"; // es6 example
+import Accordion from 'js-accordion'
 
+const id = 'accordion'
 const accordion = new Accordion(id [, config]) // config is a optional param
 
 ````
@@ -118,7 +123,7 @@ you can change the default theme changing this css variables.
 
 ### Bonus
 
-- [] Add new section with Ajax content
+- [x] Add new section with Ajax content
 
 ## Author
 

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable func-names */
-import {Accordion} from '../../lib/index'
+import Accordion from '../../lib/index'
 import {loadExample, loadThemes, getRequest} from './utils'
 import {
   examples,
