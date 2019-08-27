@@ -3,6 +3,7 @@ cache:
   directories:
     - "~/.npm"
     - "node_modules" #Cache node_modules for faster builds
+    - dist #Cache node_modules for faster builds
 notifications:
   email: false
 node_js:
@@ -44,7 +45,6 @@ jobs:
           condition: $TRAVIS_BRANCH = master
     - stage: npm release
       if: branch = master
-      script: npm run build
       deploy:
         provider: script
         skip_cleanup: true
