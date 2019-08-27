@@ -14,8 +14,10 @@ module.exports = merge(common, {
   stats: 'errors-only',
   bail: true,
   output: {
-    path: Path.join(common.output.path, 'lib'),
-    filename: 'js/js-accordion.min.js'
+    path: Path.join(common.output.path, 'lib/js'),
+    filename: 'js-accordion.min.js',
+    library: 'jsAccodrion',
+    libraryTarget: 'umd'
   },
   resolve: {
     alias: {
