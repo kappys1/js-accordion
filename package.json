@@ -5,7 +5,10 @@
   "homepage": ".",
   "main": "js/js-accordion.min.js",
   "files": [
+    "js",
+    "css",
     "package.json",
+    "CHANGELOG.md",
     "README.md"
   ],
   "scripts": {
