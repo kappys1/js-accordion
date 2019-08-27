@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/kappys1/js-accordion/compare/v1.0.1...v1.0.2) (2019-08-27)
+
+
+### Bug Fixes
+
+* **release:** correct structure ([9bd8020](https://github.com/kappys1/js-accordion/commit/9bd8020))
+* **release:** correct structure ([8aec1af](https://github.com/kappys1/js-accordion/commit/8aec1af))
+* **release:** correct structure folders ([b2d2a9d](https://github.com/kappys1/js-accordion/commit/b2d2a9d))
+
 ## [1.0.1](https://github.com/kappys1/js-accordion/compare/v1.0.0...v1.0.1) (2019-08-27)
 
 
