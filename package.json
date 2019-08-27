@@ -5,6 +5,7 @@
   "homepage": ".",
   "main": "js/js-accordion.min.js",
   "files": [
+    "dist/lib",
     "package.json",
     "README.md"
   ],
@@ -72,6 +73,8 @@
     "@babel/preset-env": "^7.4.2",
     "@commitlint/cli": "^8.1.0",
     "@commitlint/config-conventional": "^8.1.0",
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/git": "^7.0.16",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^2.0.2",

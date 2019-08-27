@@ -2,8 +2,8 @@ language: node_js
 cache:
   directories:
     - "~/.npm"
-    - node_modules #Cache node_modules for faster builds
-    - dist
+    - "node_modules" #Cache node_modules for faster builds
+    - "dist"
 notifications:
   email: false
 node_js:
@@ -17,7 +17,6 @@ jobs:
       script: npm run test
     - stage: build
       script: npm run build
-      skip_cleanup: true
     - stage: deploy to heroku staging
       if: branch = staging
       script: skip
@@ -46,18 +45,13 @@ jobs:
           condition: $TRAVIS_BRANCH = master
     - stage: npm release
       if: branch = master
-      node_js: "stable"
-      script: npm run semantic-release
-      before_deploy:
-        - cp package.json dist/lib/package.json
-        - cd dist/lib
+      node_js: lts/*
+      script: skip
       deploy:
-        provider: npm
-        email: "$NPM_EMAIL"
-        api_key: "$NPM_TOKEN"
+        provider: script
         skip_cleanup: true
-        on:
-          tags: true
+        script:
+          - npx semantic-release
 branches:
   only:
     - master
