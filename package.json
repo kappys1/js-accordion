@@ -5,7 +5,6 @@
   "homepage": ".",
   "main": "js/js-accordion.min.js",
   "files": [
-    "dist/lib",
     "package.json",
     "README.md"
   ],
