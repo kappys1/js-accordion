@@ -6,13 +6,11 @@ export class AccordionItem {
     this.header = header
     this.config = config
     this.header.classList.add('JsAccordion-header')
-    if (content) {
-      if (content.nodeName.toLowerCase() === 'dd') {
-        this.content = content
-        if (!this.content.classList.contains('JsAccordion-body')) {
-          this.content.classList.add('JsAccordion-body')
-          this.close()
-        }
+    if (content && content.nodeName.toLowerCase() === 'dd') {
+      this.content = content
+      if (!this.content.classList.contains('JsAccordion-body')) {
+        this.content.classList.add('JsAccordion-body')
+        this.close()
       }
     }
   }
