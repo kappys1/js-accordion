@@ -39,7 +39,11 @@ window.loadAjaxAccordion = function() {
         dynamicAccordion = new Accordion(id, config)
       })
     })
-    .catch(err => console.log(err))
+    .catch(
+      err =>
+        (document.getElementById('examplesDynamic').innerHTML =
+          '<div>Something is wrong... sorry</div>')
+    )
 }
 
 window.loadAjaxContent = function() {
@@ -55,6 +59,8 @@ window.loadAjaxContent = function() {
       `)
       dynamicAccordion.update()
     })
+  } else {
+    alert('Load Dynamic accordion first')
   }
 }
 
